@@ -57,7 +57,6 @@ Source: [YouTube][youTubeUrl]
 > ```
 > * Create .prettierrc.json and customize for yourself.
 > * Create .eslintrc.json and customize for yourself.
-***
 
 ## .gitignore and .env
 
@@ -70,7 +69,6 @@ MONGO_PATH={your_mongo_path}
 MONGO_USER={your_mongo_user}
 MONGO_PASSWORD={your_mongo_password}
 ```
-***
 
 ## Module Aliases
 Short time ago we added ```"paths":{...}``` option to tsconfig.json which was just for TypeScript. Now we must add same option for JavaScript version. For that we should install ```module_alias``` package. Run this command.
@@ -88,7 +86,6 @@ And add these lines to your **package.json** file.
     "@/middleware": "dist/middleware"
 }
 ```
-***
 
 ## Folder Structure
 
@@ -98,7 +95,6 @@ And add these lines to your **package.json** file.
   * utils
   * app.ts
   * index.ts
-***
 
 ## Write The Framework Logic
 
