@@ -10,11 +10,11 @@ Source: [YouTube][youTubeUrl]
 
 ### package.json
 
-+ Create package.json with ```npm init -y``` _(-y optional)_ command.
+* Create package.json with ```npm init -y``` _(-y optional)_ command.
 
 ### tsconfig.json
 
-+ Create tsconfig.json with ```tsc --init``` or ```npx tsc --init``` command and fill up like this example. I manually
+* Create tsconfig.json with ```tsc --init``` or ```npx tsc --init``` command and fill up like this example. I manually
   added the ones a comment lines with next to them.
 
 ```json lines
@@ -48,15 +48,16 @@ Source: [YouTube][youTubeUrl]
 
 ### Download packages
 
-+ ```npm i express dotenv```
-+ ```npm i -D @types/express```
+* ```npm i express dotenv```
+* ```npm i -D @types/express```
 
 > Note: You can run this command if your IDE or Text Editor does not have prettier and eslint.
 > ```
 > npm i -D typescript tsc-watch eslint prettier eslint-config-prettier eslint-plugin-prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin @types/node @types/express
 > ```
-> + Create .prettierrc.json and customize for yourself.
-> + Create .eslintrc.json and customize for yourself.
+> * Create .prettierrc.json and customize for yourself.
+> * Create .eslintrc.json and customize for yourself.
+***
 
 ## .gitignore and .env
 
@@ -69,6 +70,7 @@ MONGO_PATH={your_mongo_path}
 MONGO_USER={your_mongo_user}
 MONGO_PASSWORD={your_mongo_password}
 ```
+***
 
 ## Module Aliases
 Short time ago we added ```"paths":{...}``` option to tsconfig.json which was just for TypeScript. Now we must add same option for JavaScript version. For that we should install ```module_alias``` package. Run this command.
@@ -86,32 +88,66 @@ And add these lines to your **package.json** file.
     "@/middleware": "dist/middleware"
 }
 ```
+***
 
 ## Folder Structure
 
-+ src
-  + middleware
-  + resources
-  + utils
-  + app.ts
-  + index.ts
+* src
+  * middleware
+  * resources
+  * utils
+  * app.ts
+  * index.ts
+***
 
+## Write The Framework Logic
 
+### Get in App.ts file
 
+#### 1. Import packages we will use
+```typescript
+import express, { Application } from "express" 
+import mongoose from "mongoose"
+import compression from "compression"
+import cors from "cors"
+import morgan from "morgan"
+import helmet from "helmet"
+import Controller from "@/utils/interfaces/controller.interface"
+import ErrorMiddleware from "@/middleware/error.middleware"
+```
 
+#### What will us do with these packages?
 
+* Express.js: Web Framework.
+* Mongoose: Connect to MongoDB.
+* Middlewares
+  * Compression: Compresses requests.
+  * Cors: Setts the cors settings.
+  * Morgan: HTTP request logger.
+  * Helmet: Secures your express app.
 
+#### 2. [Create App class](./src/app.ts)
 
+* Define two variables for express and port.
+* Set constructor
+  * Get two variables for controllers and port.
+  * Create in class and call in construction function these methods
+    * private initialiseDatabaseConnection(): void
+    * private initialiseMiddleware(): void
+    * private initialiseControllers(controllers: Controller[]): void
+    * private initialiseErrorHandling(): void
 
+> * Controllers data type must be Controller[]
+> * Create a file ./utils>interfaces>controller.interface.ts
+> * Define an interface which name is Controller
+> * Controller's interface get two variables ```path: string``` and ```router: Router```
 
+> Error handler
+> Create a function in ./middleware>error.middleware.ts
 
+## Start app.ts
 
-
-
-
-
-
-
+in the index.ts file we are going to start App class
 
 
 
