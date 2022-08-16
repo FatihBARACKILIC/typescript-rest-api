@@ -44,7 +44,7 @@ class App {
     const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env
 
     mongoose
-      .connect(`mongo+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_PATH}`, {
+      .connect(`mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_PATH}`, {
         authSource: "admin",
         retryWrites: true,
         w: "majority",
