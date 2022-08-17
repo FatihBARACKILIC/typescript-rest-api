@@ -1,10 +1,4 @@
-import {
-  Router,
-  Request,
-  Response,
-  NextFunction,
-  RequestHandler,
-} from "express"
+import { NextFunction, Request, Response, Router } from "express"
 import Controller from "@/utils/interfaces/controller.interface"
 import HttpExceptions from "@/utils/exceptions/http.exceptions"
 import validationMiddleware from "@/middleware/validation.middleware"
