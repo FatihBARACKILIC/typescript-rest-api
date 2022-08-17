@@ -1,0 +1,26 @@
+### Create a User
+POST {{urlUsers}}register
+Content-Type: application/json
+
+{
+  "name": "Fatih",
+  "email": "example@test.com",
+  "password": "ps1234"
+}
+
+### Login a User
+POST {{urlUsers}}login
+Content-Type: application/json
+
+{
+  "email": "example@test.com",
+  "password": "ps1234"
+}
+
+> {%
+ client.global.set("auth_token", response.body.token)
+ %}
+
+### auth
+GET http://localhost:3000/api/users/
+Authorization: Bearer {{auth_token}}
